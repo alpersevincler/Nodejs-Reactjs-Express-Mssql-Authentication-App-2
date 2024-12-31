@@ -11,7 +11,29 @@ function Home() {
   axios.defaults.withCredentials = true;
 
   
-  useEffect( () => {
+  useEffect( async() => {
+
+    await fetch('http://localhost:8081', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then((res) => {
+      res.json().then((jsonResponse) => {
+        if(jsonResponse.Status === "Success") {
+          console.log("Home jsonResponse = ", jsonResponse)
+          setAuth(true)
+          setName(jsonResponse.name)
+        }else {
+          setAuth(false)
+          setMessage(jsonResponse.Error)
+        }
+      }).catch(err => console.log("Home page eror = ", err));
+    })
+
+    /* 
     axios.get('http://localhost:8081')
     .then(res => {
       if(res.data.Status === "Success") {
@@ -23,6 +45,7 @@ function Home() {
       }
     })
     .then(err => console.log(err));
+    */
   }, [])
 
 
