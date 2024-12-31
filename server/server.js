@@ -137,7 +137,7 @@ app.post('/login', async(req, res) => {
                     const token = jwt.sign({name}, "jwt-secret-key", {expiresIn: '1d'});
 
                     res.cookie('token', token);
-
+ 
                     return res.json({Status: "Success"});
                 }else {
                     return res.json({Error: "Password not matched"});

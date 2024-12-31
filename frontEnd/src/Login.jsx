@@ -9,9 +9,31 @@ function Login() {
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         // event.preventDefault() ile form'daki button'a tıklandığında sayfanın yenilenmesini engellemiş olduk
         event.preventDefault();
+
+        await fetch('http://localhost:8081/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({...values})
+        })
+        .then((res) => {
+            res.json().then((jsonResponse) => {
+                console.log("Login jsonResponse = ", jsonResponse)
+                if(jsonResponse.Status === "Success") {
+                    navigate('/')
+                }else {
+                    alert("Login failed");
+                }
+            })
+        }).catch(err => console.log("Login Error = ", err));
+
+        /*
+
         axios.post('http://localhost:8081/login', values)
         .then(res => {
             console.log("res on server = ", res)
@@ -25,6 +47,8 @@ function Login() {
         })
         .then(err => {console.log("if there is err = ", err);});
 
+        */
+       
         console.log("values =", values);
     }
 
