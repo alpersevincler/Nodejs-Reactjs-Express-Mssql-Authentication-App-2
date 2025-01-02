@@ -14,6 +14,7 @@ function Login() {
         event.preventDefault();
 
         await fetch('http://localhost:8081/login', {
+            credentials: 'include',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,6 +26,7 @@ function Login() {
             res.json().then((jsonResponse) => {
                 console.log("Login jsonResponse = ", jsonResponse)
                 if(jsonResponse.Status === "Success") {
+                    console.log("login page baby")
                     navigate('/')
                 }else {
                     alert("Login failed");

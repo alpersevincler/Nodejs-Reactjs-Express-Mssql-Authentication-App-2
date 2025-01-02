@@ -44,10 +44,11 @@ console.log("dataDB = ", dataDB.recordset);
 //  -objeler ve diziler silsilesi bulunan datayı bu metoda req(request) olarak göndermiş olacak
 const verifyUser = (req, res, next) => {
     console.log("verify res = ", res.cookies);
+    console.log("verifyUser req = ", req);
     const token = req.cookies.token;
     console.log("verifyUser token = ", token);
     if(!token) {
-        return res.json({Error: "You are not authenticated"});
+        return res.json({Error: "You are not authenticated-1"});
     }else {
         // aşağıdaki app.post('/login', "jwt-secret-key") yapısı içindeki 'const token = jwt.sign({name}, "jwt-secret-key")' tanımından geliyor
         jwt.verify(token, "jwt-secret-key", (err, decoded) => {
@@ -136,7 +137,9 @@ app.post('/login', async(req, res) => {
                     //  -expiresIn: '1d'-> 1 gün(1d) boyunca geçerli ömrü olsun
                     const token = jwt.sign({name}, "jwt-secret-key", {expiresIn: '1d'});
 
-                    res.cookie('token', token);
+                    res.cookie('token', token, {sameSite: 'lax'});
+                    // const testCookie = res.cookie('token', token);
+                    // console.log("testCookie on server = ", testCookie.vary());
  
                     return res.json({Status: "Success"});
                 }else {

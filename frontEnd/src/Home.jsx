@@ -11,9 +11,10 @@ function Home() {
   axios.defaults.withCredentials = true;
 
   
-  useEffect( async() => {
+  useEffect( () => {
 
-    await fetch('http://localhost:8081', {
+    fetch('http://localhost:8081', {
+      credentials: 'include',
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -53,12 +54,14 @@ function Home() {
   const handleDelete = async() => {
     
     await fetch('http://localhost:8081/logout', {
+      credentials: 'include',
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
     }).then((res) => {
+      console.log("Home logout res = ", res);
       // server tarafından yanıt gelince sayfayı yeniden yükle
       location.reload(true);
     }).catch(err => console.log("Home logout error = ", err));
