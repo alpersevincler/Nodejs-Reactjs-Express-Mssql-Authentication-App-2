@@ -50,13 +50,27 @@ function Home() {
 
 
   // Logout butonuna tıklanınca bu metot çalışacak
-  const handleDelete = () => {
+  const handleDelete = async() => {
+    
+    await fetch('http://localhost:8081/logout', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then((res) => {
+      // server tarafından yanıt gelince sayfayı yeniden yükle
+      location.reload(true);
+    }).catch(err => console.log("Home logout error = ", err));
+
+    /*     
     axios.get('http://localhost:8081/logout')
     .then(res => {
       // server tarafından yanıt gelince sayfayı yeniden yükle
       location.reload(true);
     })
     .catch(err => console.log(err));
+    */
   }
 
   return (
