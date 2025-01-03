@@ -43,8 +43,8 @@ console.log("dataDB = ", dataDB.recordset);
 // aşağıdaki app.get('/', verifyUser,...) yapısı tetiklendiğinde bu metodu çalıştıracak ve ('/') sayfası içinde cookies token bilgisinin de olduğu 
 //  -objeler ve diziler silsilesi bulunan datayı bu metoda req(request) olarak göndermiş olacak
 const verifyUser = (req, res, next) => {
-    console.log("verify res = ", res.cookies);
-    console.log("verifyUser req = ", req);
+    console.log("verify res = ", res._onPendingData);
+    console.log("verifyUser req = ", req.cookies);
     const token = req.cookies.token;
     console.log("verifyUser token = ", token);
     if(!token) {
