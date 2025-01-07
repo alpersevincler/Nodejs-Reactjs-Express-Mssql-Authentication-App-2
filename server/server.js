@@ -135,7 +135,7 @@ app.post('/login', async(req, res) => {
                     const name = sql.recordset[0].name;
                     // jsonwebtoken(jwt) ile token oluştuduk. jwt-secret-key-> primary key(min 21 karakter önerilir güvenlik için), 
                     //  -expiresIn: '1d'-> 1 gün(1d) boyunca geçerli ömrü olsun
-                    const token = jwt.sign({name}, "jwt-secret-key", {expiresIn: '1d'});
+                    const token = jwt.sign({name}, "jwt-secret-key", {expiresIn: '1m'});
 
                     res.cookie('token', token, {sameSite: 'lax'});
                     // const testCookie = res.cookie('token', token);
@@ -176,6 +176,7 @@ app.post('/login', async(req, res) => {
 });
 
 app.get('/logout', (req, res) => {
+    // token name'ine sahip cookie'yi temizle
     res.clearCookie('token');
     return res.json({Status: "Success"});
 })

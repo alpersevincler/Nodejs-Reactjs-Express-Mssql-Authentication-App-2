@@ -63,7 +63,7 @@ function Home() {
     }).then((res) => {
       console.log("Home logout res = ", res);
       // server tarafından yanıt gelince sayfayı yeniden yükle
-      // location.reload(true);
+      location.reload(true);
     }).catch(err => console.log("Home logout error = ", err));
 
     /*     
