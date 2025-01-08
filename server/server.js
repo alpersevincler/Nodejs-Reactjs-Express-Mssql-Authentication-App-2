@@ -135,6 +135,7 @@ app.post('/login', async(req, res) => {
                     const name = sql.recordset[0].name;
                     // jsonwebtoken(jwt) ile token oluştuduk. jwt-secret-key-> primary key(min 21 karakter önerilir güvenlik için), 
                     //  -expiresIn: '1d'-> 1 gün(1d) boyunca geçerli ömrü olsun
+                    // access or refresh token?
                     const token = jwt.sign({name}, "jwt-secret-key", {expiresIn: '1m'});
 
                     res.cookie('token', token, {sameSite: 'lax'});
