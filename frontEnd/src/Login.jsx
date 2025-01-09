@@ -13,12 +13,13 @@ function Login() {
         // event.preventDefault() ile form'daki button'a tıklandığında sayfanın yenilenmesini engellemiş olduk
         event.preventDefault();
 
+        // Authorization: 'fsd' - Authorization: `Bearer ${authToken}`
         await fetch('http://localhost:8081/login', {
             credentials: 'include',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
             },
             body: JSON.stringify({...values})
         })
