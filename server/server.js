@@ -51,6 +51,7 @@ const verifyUser = (req, res, next) => {
         return res.json({Error: "You are not authenticated-1"});
     }else {
         // aşağıdaki app.post('/login', "jwt-secret-key") yapısı içindeki 'const token = jwt.sign({name}, "jwt-secret-key")' tanımından geliyor
+        // login işlemi ile üretilen token'ı yakalıyıp jwt-secret-key ismine sahip primary key ile karşılaştırıp doğrulama yaptık
         jwt.verify(token, "jwt-secret-key", (err, decoded) => {
             if(err) {
                 return res.json({Error: "Token is not okay"});
