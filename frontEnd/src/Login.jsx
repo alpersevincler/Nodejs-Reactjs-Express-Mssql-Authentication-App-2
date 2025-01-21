@@ -7,6 +7,8 @@ function Login() {
 
     const [values, setValues] = useState({email: '', password: ''});
     const navigate = useNavigate();
+
+    // token'ı başarıyla cookie'de saklayabilmek için axios altındaki withCredentials'ın değerini true olarak atnımladık
     axios.defaults.withCredentials = true;
 
     const handleSubmit = async(event) => {

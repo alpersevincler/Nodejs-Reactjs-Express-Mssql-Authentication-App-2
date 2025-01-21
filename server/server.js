@@ -45,8 +45,11 @@ console.log("dataDB = ", dataDB.recordset);
 const verifyUser = (req, res, next) => {
     console.log("verify res = ", res._onPendingData);
     console.log("verifyUser req = ", req.cookies);
+
     const token = req.cookies.token;
+    
     console.log("verifyUser token = ", token);
+
     if(!token) {
         return res.json({Error: "You are not authenticated-1"});
     }else {
