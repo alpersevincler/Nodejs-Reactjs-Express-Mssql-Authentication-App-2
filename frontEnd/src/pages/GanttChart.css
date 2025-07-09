@@ -1,0 +1,92 @@
+.gantt-container {
+  width: 100%;
+  overflow-x: auto;
+  font-family: Arial, sans-serif;
+  background: #f0f0ff;
+  box-sizing: border-box;
+}
+
+.gantt-header .row {
+  display: grid;
+  grid-template-columns: 175px 180px 80px repeat(22, 40px);
+}
+
+.year-row .year-label,
+.months-row .months-label {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-weight: bold;
+}
+
+.month-cell {
+  background: #7766ff;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+.weeks-row .cell {
+  background: #7766ff;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+.gantt-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.gantt-row {
+  display: grid;
+  grid-template-columns: 160px 180px 80px repeat(22, 40px);
+  align-items: center;
+  border: 0.5px solid #000000;
+}
+
+.row-info {
+  border: 1px solid #ccc;
+  padding: 5px;
+  background: #fff;
+  font-size: 12px;
+  text-align: center;
+}
+
+.row-timeline {
+  display: grid;
+  grid-template-columns: repeat(22, 40px);
+  position: relative;
+}
+
+.task-block {
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  padding: 4px 0;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.task-block.cp { background-color: #eab0b0; }
+.task-block.egd { background-color: #c18ce5; }
+.task-block.mfd { background-color: #4ab7ff; }
+.task-block.fad { background-color: #81e081; }
+.task-block.qcd { background-color: #ffcb71; }
+.task-block.pud { background-color: #f6633d; }
+.task-block.com { background-color: #b28fff; }
+
+@media (max-width: 768px) {
+  .gantt-header .row,
+  .gantt-row {
+    grid-template-columns: 120px 120px 60px repeat(22, 30px);
+  }
+
+  .row-info { font-size: 10px; }
+  .task-block { font-size: 10px; }
+}
