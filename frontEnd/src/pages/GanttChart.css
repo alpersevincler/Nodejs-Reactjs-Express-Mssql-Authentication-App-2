@@ -1,6 +1,6 @@
 .gantt-container {
   width: 100%;
-  overflow-x: auto;
+  overflow-x: auto; /* Scroll aktif */
   font-family: Arial, sans-serif;
   background: #f0f0ff;
   box-sizing: border-box;
@@ -8,16 +8,27 @@
 
 .gantt-header .row {
   display: grid;
-  grid-template-columns: 175px 180px 80px repeat(22, 40px);
+  grid-template-columns: 175px 180px 80px repeat(300, 56px); /* SABİT sütunlar */
 }
 
 .year-row .year-label,
 .months-row .months-label {
   background: #333;
   color: white;
+  text-align: right;
+  padding: 8px 0;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  padding-right: 1rem;
+}
+
+.year-cell {
+  background: #7766ff;
+  color: white;
   text-align: center;
   padding: 8px 0;
   font-weight: bold;
+  border: 1px solid #ddd;
 }
 
 .month-cell {
@@ -45,9 +56,9 @@
 
 .gantt-row {
   display: grid;
-  grid-template-columns: 160px 180px 80px repeat(22, 40px);
+  grid-template-columns: 160px 180px 80px repeat(300, 56px); /* Aynı sütun yapısı */
   align-items: center;
-  border: 0.5px solid #000000;
+  /* border: 0.5px solid #000000; */
 }
 
 .row-info {
@@ -60,7 +71,7 @@
 
 .row-timeline {
   display: grid;
-  grid-template-columns: repeat(22, 40px);
+  grid-template-columns: repeat(300, 56px); /* Yine sabit sütunlar */
   position: relative;
 }
 
@@ -81,12 +92,18 @@
 .task-block.pud { background-color: #f6633d; }
 .task-block.com { background-color: #b28fff; }
 
+.task-block:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+/* 
 @media (max-width: 768px) {
   .gantt-header .row,
   .gantt-row {
-    grid-template-columns: 120px 120px 60px repeat(22, 30px);
+    grid-template-columns: 160px 180px 80px repeat(27, 40px);
   }
 
   .row-info { font-size: 10px; }
   .task-block { font-size: 10px; }
 }
+ */

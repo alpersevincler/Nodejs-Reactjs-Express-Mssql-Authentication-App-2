@@ -17,27 +17,60 @@ const GanttChart = () => {
     { code: 'CS-SI-VSID-CMD-DLV', desc: 'Delivery', className: 'com', colStart: 1, span: 22, label: 'COM' },
   ];
 
-  const months = ["July", "J-A", "August", "J-A", "September", "J-A", "October", "J-A", "November", "N-D"];
-
   return (
     <div className="gantt-container">
       {/* Header Rows */}
       <div className="gantt-header">
         <div className="row year-row">
           <div className="cell year-label" style={{ gridColumn: '1 / span 3' }}>YEAR</div>
+          <div className="cell year-cell" style={{ gridColumn: '4 / span 27' }}>2025</div>
+          <div className="cell year-cell" style={{ gridColumn: '31 / span 52' }}>2026</div>
+          <div className="cell year-cell" style={{ gridColumn: '83 / span 52' }}>2027</div>
         </div>
         <div className="row months-row">
           <div className="cell months-label" style={{ gridColumn: '1 / span 3' }}>MONTHS</div>
-          {months.map((month, i) => (
-            <div className="cell month-cell" key={i}>{month}</div>
-          ))}
+          <div className="cell month-cell" style={{ gridColumn: '4 / span 1' }}></div> {/* BOŞ HÜCRE */}
+          <div className="cell month-cell" style={{ gridColumn: '5 / span 4' }}>July</div>
+          <div className="cell month-cell" style={{ gridColumn: '9 / span 1' }}>J-A</div>
+          <div className="cell month-cell" style={{ gridColumn: '10 / span 3' }}>August</div>
+          <div className="cell month-cell" style={{ gridColumn: '13 / span 1' }}>A-S</div>
+          <div className="cell month-cell" style={{ gridColumn: '14 / span 4' }}>September</div>
+          <div className="cell month-cell" style={{ gridColumn: '18 / span 1' }}>S-O</div>
+          <div className="cell month-cell" style={{ gridColumn: '19 / span 3' }}>October</div>
+          <div className="cell month-cell">O-N</div>
+          <div className="cell month-cell" style={{ gridColumn: '23 / span 3' }}>November</div>
+          <div className="cell month-cell">N-D</div>
+          <div className="cell month-cell" style={{ gridColumn: '27 / span 4' }}>December</div>
+          <div className="cell month-cell">D-J</div>
+          <div className="cell month-cell" style={{ gridColumn: '32 / span 3' }}>January</div>
+          <div className="cell month-cell">J-B</div>
+          <div className="cell month-cell" style={{ gridColumn: '36 / span 3' }}>February</div>
+          <div className="cell month-cell">F-M</div>
+          <div className="cell month-cell" style={{ gridColumn: '40 / span 4' }}>March</div>
+          <div className="cell month-cell">M-A</div>
+          <div className="cell month-cell" style={{ gridColumn: '45 / span 3' }}>April</div>
+          <div className="cell month-cell">A-M</div>
+          <div className="cell month-cell" style={{ gridColumn: '49 / span 3' }}>May</div>
+          <div className="cell month-cell">M-J</div>
         </div>
         <div className="row weeks-row">
           <div className="cell">Sl Type</div>
           <div className="cell">Yard Number</div>
           <div className="cell">Weeks</div>
-          {[...Array(22)].map((_, i) => (
-            <div className="cell" key={i}>{27 + i}</div>
+
+          {/* İlk bölüm: 26 → 52 */}
+          {[...Array(27)].map((_, i) => (
+            <div className="cell" key={`first-${i}`}>{26 + i}</div>
+          ))}
+
+          {/* İkinci bölüm: 1 → 52 */}
+          {[...Array(52)].map((_, i) => (
+            <div className="cell" key={`second-${i}`}>{i + 1}</div>
+          ))}
+
+          {/* Üçüncü bölüm: 1 → 52 */}
+          {[...Array(52)].map((_, i) => (
+            <div className="cell" key={`third-${i}`}>{i + 1}</div>
           ))}
         </div>
       </div>
